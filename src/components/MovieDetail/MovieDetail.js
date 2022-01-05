@@ -12,7 +12,6 @@ export const MovieDetail = () => {
   const { imdbID } = useParams();
   const dispatch = useDispatch();
   const data = useSelector(getSelectedMovieOrShow);
-  console.log(data);
 
   useEffect(() => {
     dispatch(fetchAsyncMovieOrShowDetails(imdbID));
@@ -20,7 +19,7 @@ export const MovieDetail = () => {
     return () => {
       dispatch(removeSelectedMovieOrShow());
     };
-  }, []);
+  }, [dispatch, imdbID]);
 
   return (
     <div className="movie-section">
